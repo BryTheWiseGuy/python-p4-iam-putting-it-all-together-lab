@@ -16,6 +16,8 @@ class User(db.Model, SerializerMixin):
  
     recipes = db.relationship('Recipe', back_populates='user')
     
+    serialize_rules = ('-recipes.user', )
+    
     @hybrid_property
     def password_hash(self):
         raise AttributeError
